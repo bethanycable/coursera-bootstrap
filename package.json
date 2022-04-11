@@ -1,31 +1,41 @@
 {
-  "name": "confusion",
-  "version": "1.0.0",
-  "description": "This is a website for Ristorante Con Fusion",
-  "main": "index.html",
-  "scripts": {
-    "start": "npm run watch:all",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lite": "lite-server",
-    "scss": "node-sass -o css/ css/",
-    "watch:scss": "onchange \"css/*.scss\" -- npm run scss",
-    "watch:all": "parallelshell \"npm run watch:scss\" \"npm run lite\""
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "lite-server": "^2.3.0",
-    "node-sass": "^7.0.1",
-    "onchange": "^7.1.0",
-    "parallelshell": "^3.0.2"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.11.5",
-    "bootstrap": "^5.1.3",
-    "bootstrap-social": "^5.1.1",
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.6.0",
-    "popper.js": "^1.16.1",
-    "uuid": "^8.3.2"
-  }
+	"name": "confusion",
+	"version": "1.0.0",
+	"description": "This is a website for Ristorante Con Fusion",
+	"main": "index.html",
+	"scripts": {
+		"start": "npm run watch:all",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lite": "lite-server",
+		"scss": "node-sass -o css/ css/",
+		"watch:scss": "onchange \"css/*.scss\" -- npm run scss",
+		"watch:all": "parallelshell \"npm run watch:scss\" \"npm run lite\"",
+		"clean": "rimraf dist",
+		"copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts",
+		"imagemin": "imagemin img/* --out-dir=\"dist/img\"",
+		"usemin": "usemin contactus.html -d dist -o dist/contactus.html --htmlmin true && usemin about.html -d dist  -o dist/about.html --htmlmin true && usemin index.html -d dist  -o dist/index.html --htmlmin true",
+		"build": "npm run clean && npm run copyfonts && npm run imagemin && npm run usemin"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"lite-server": "^2.3.0",
+		"node-sass": "^7.0.1",
+		"onchange": "^7.1.0",
+		"parallelshell": "^3.0.2",
+		"rimraf": "^3.0.2"
+	},
+	"dependencies": {
+		"@popperjs/core": "^2.11.5",
+		"bootstrap": "^5.1.3",
+		"bootstrap-social": "^5.1.1",
+		"cssmin": "^0.4.3",
+		"font-awesome": "^4.7.0",
+		"htmlmin": "^0.0.7",
+		"jquery": "^3.6.0",
+		"popper.js": "^1.16.1",
+		"uglify-js": "^3.15.4",
+		"usemin-cli": "^0.6.0",
+		"uuid": "^8.3.2"
+	}
 }
